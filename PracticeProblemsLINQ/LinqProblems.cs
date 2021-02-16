@@ -17,11 +17,12 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem1(List<string> words)
         {
             //code
-
+            List<string> stringsThatContainTH = words.Where(s => s.Contains("th")).ToList();
             //return
-
+            return stringsThatContainTH;
         }
         #endregion
+         
 
         #region Problem 2 
         //(5 points) Problem 2
@@ -29,11 +30,12 @@ namespace PracticeProblemsLINQ
         public static List<string> RunProblem2(List<string> names)
         {
             //code
-
+            List<string> distinctNames = names.Distinct().ToList();
             //return
-
+            return distinctNames;
         }
         #endregion
+        
 
         #region Problem 3
         //(5 points) Problem 3
@@ -41,9 +43,9 @@ namespace PracticeProblemsLINQ
         public static Customer RunProblem3(List<Customer> customers)
         {
             //code
-
+            Customer loneCustomer = customers.First(c => c.FirstName.Contains("Mike"));    //maybe .Single?
             //return
-
+            return loneCustomer;
         }
         #endregion
 
