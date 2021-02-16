@@ -42,6 +42,47 @@ namespace PracticeProblemsLINQ
             //Bonus Problem 1
             string letters = "terrill";
 
+
+        }
+        public static Customer RunProblem4(List<Customer> customers)
+        {
+            foreach (Customer customer in customers)
+            {
+                if (customer.Id == 3)
+                {
+                    Console.WriteLine("Please write customer first name: ");
+                    customer.FirstName = Console.ReadLine();
+                    Console.WriteLine("Please write customer last name: ");
+                    customer.FirstName = Console.ReadLine();
+                    return customer;
+                }
+            }
+            return null;
+        }
+
+        public static double RunProblem5(List<string> classGrades)
+        {
+            var classGrade = new List<double>();
+            var studentGrade = new List<double>();
+            foreach (string grades in classGrades)
+            {
+                string[] separateGrades = grades.Split(',');
+                foreach (string separateGrade in separateGrades)
+                {
+                    studentGrade.Add(double.Parse(separateGrade));
+                }
+                studentGrade.Remove(studentGrade.Min());
+                classGrade.Add(studentGrade.Average());
+                studentGrade.Clear();
+            }
+            return classGrade.Average();
+        }
+        public static string RunBonusProblem1(string word)
+        {
+            var charList = word.ToList<char>();
+            charList.Distinct
+
+
         }
     }
 }
