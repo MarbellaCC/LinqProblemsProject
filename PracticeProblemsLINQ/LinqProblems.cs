@@ -75,19 +75,18 @@ namespace PracticeProblemsLINQ
         {
             var classGrade = new List<double>();
             var studentGrade = new List<double>();
-            foreach (string grades in classGrades)
+            var SeparatedStudentStringGrade = new List<string>();
+
+            for (int i = 0; i < classGrades.Count; i++)
             {
-                string[] separateGrades = grades.Split(',');
-                foreach (string separateGrade in separateGrades)
-                {
-                    studentGrade.Add(double.Parse(separateGrade));
-                }
+                studentGrade = new List<double>();
+                SeparatedStudentStringGrade = new List<string>();
+                SeparatedStudentStringGrade.Add(classGrades[i].Split(',').ToString());
+                SeparatedStudentStringGrade.ForEach(separateGrade => studentGrade.Add(double.Parse(separateGrade)));
                 studentGrade.Remove(studentGrade.Min());
                 classGrade.Add(studentGrade.Average());
-                studentGrade.Clear();
             }
             return classGrade.Average();
-
         }
         #endregion
 
