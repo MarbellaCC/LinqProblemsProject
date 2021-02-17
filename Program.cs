@@ -42,7 +42,9 @@ namespace PracticeProblemsLINQ
             //Bonus Problem 1
             string letters = "terrill";
 
-
+            LinqProblems.RunBonusProblem1(letters);
+            Console.ReadLine();
         }
+        
     }
 }

@@ -73,21 +73,17 @@ namespace PracticeProblemsLINQ
         //Expected output: 86.125
         public static double RunProblem5(List<string> classGrades)
         {
-            var classGrade = new List<double>();
-            var studentGrade = new List<double>();
-            foreach (string grades in classGrades)
+            var classGrade = new List<double>();            
+
+            for (int i = 0; i < classGrades.Count; i++)
             {
-                string[] separateGrades = grades.Split(',');
-                foreach (string separateGrade in separateGrades)
-                {
-                    studentGrade.Add(double.Parse(separateGrade));
-                }
+                var studentGrade = new List<double>();
+                var SeparatedStudentStringGrade = new List<string>(classGrades[i].Split(','));
+                SeparatedStudentStringGrade.ForEach(separateGrade => studentGrade.Add(double.Parse(separateGrade)));
                 studentGrade.Remove(studentGrade.Min());
                 classGrade.Add(studentGrade.Average());
-                studentGrade.Clear();
             }
             return classGrade.Average();
-
         }
         #endregion
 
@@ -97,9 +93,28 @@ namespace PracticeProblemsLINQ
         //and returns an alphabetically ordered string corresponding to the letter frequency(i.e. "E1I1L2R2T1")
         public static string RunBonusProblem1(string word)
         {
-            var charList = word.ToList<char>();
-            charList.Distinct
+            var characters = word.ToArray();
+            Array.Sort(characters);
+            var alphabetizedList = characters.ToList();
+            var alphabetizedShorList = characters.ToList().Distinct().ToList();
+            var completedList = new List<string>();
+            for (int i = 0; i < alphabetizedShorList.Count; i++)
+            {
+                int x = 0;
 
+                for (int j = 0; j < alphabetizedList.Count; j++)
+                {
+                    if (alphabetizedShorList[i] == alphabetizedList[j])
+                    {
+                        x++;
+                    }
+                }
+                completedList.Add(alphabetizedShorList[i].ToString());
+                completedList.Add(x.ToString());
+            }
+            string finalString = "";
+            completedList.ForEach(s => finalString += s);
+            return finalString;
         }
         #endregion
     }
