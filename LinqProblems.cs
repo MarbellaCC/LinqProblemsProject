@@ -55,7 +55,7 @@ namespace PracticeProblemsLINQ
         //Then, update that customer's first name and last name to completely different names and return the newly updated customer from the method.
         public static Customer RunProblem4(List<Customer> customers)
         {
-            Customer CustomerID3 = customers.Find(c => c.Id == 3);
+            Customer CustomerID3 = customers.Single(c => c.Id == 3);
             Console.WriteLine("Please write customer first name: ");
             CustomerID3.FirstName = Console.ReadLine();
             Console.WriteLine("Please write customer last name: ");
@@ -104,7 +104,7 @@ namespace PracticeProblemsLINQ
 
                 for (int j = 0; j < alphabetizedList.Count; j++)
                 {
-                    if (alphabetizedShorList[i] == alphabetizedList[j])
+                    if (alphabetizedShorList.Contains(alphabetizedList[j]))
                     {
                         x++;
                     }
@@ -113,7 +113,7 @@ namespace PracticeProblemsLINQ
                 completedList.Add(x.ToString());
             }
             string finalString = "";
-            completedList.ForEach(s => finalString += s);
+            completedList.ForEach(s => finalString += s.ToUpper());
             return finalString;
         }
         #endregion
